@@ -29,11 +29,11 @@ extern auth_http_plugin_context_t * create_auth_http_plugin_context(const char *
         sizeof(auth_http_plugin_context_t));
     memset(context, 0, sizeof(auth_http_plugin_context_t));
 
-    context->c_queue = create_deferred_queue();
+    /*context->c_queue = create_deferred_queue();
     if (!context->c_queue) {
         PLUGIN_ERROR("Can not create deferred queue.");
         goto error;
-    }
+    }*/
 
     context->c_optns = open_plugin_options(path_to_opt_file);
     if (!context->c_optns) {
@@ -54,7 +54,8 @@ error:
 
 extern void free_auth_http_plugin_context(auth_http_plugin_context_t *context)
 {
-    free_deferred_queue(context->c_queue);
+    if (context->c_queue)
+        free_deferred_queue(context->c_queue);
     free_plugin_options(context->c_optns);
     free(context);
 }
@@ -114,6 +115,16 @@ OPENVPN_PLUGIN_DEF int OPENVPN_PLUGIN_FUNC(openvpn_plugin_func_v2)(
 {
     auth_http_plugin_context_t *context = (auth_http_plugin_context_t*)handle;
     deferred_queue_item_t *queue_item = NULL;
+
+    /* We have to create new thread only after demonize */
+    if (!context->c_queue) {
+        context->c_queue = create_deferred_queue();
+        if (!context->c_queue) {
+            PLUGIN_ERROR("Can not create deferred queue.");
+            /* goto error; */
+            return OPENVPN_PLUGIN_FUNC_ERROR;
+        }
+    }
 
     if (type == OPENVPN_PLUGIN_AUTH_USER_PASS_VERIFY) {
 

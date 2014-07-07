@@ -77,6 +77,7 @@ static deferred_queue_item_t * remove_item_from_deferred_queue(deferred_queue_t 
             queue->q_size--;
             goto out;
         }
+        PLUGIN_DEBUG("Wait for deferred handler in queue...");
         pthread_cond_wait(&queue->q_condv, &queue->q_mutex);
     }
 
@@ -98,6 +99,7 @@ static void * consumer_func(void *arg)
     for (;;) {
         item = remove_item_from_deferred_queue(queue);
         if (item) {
+            PLUGIN_DEBUG("Perform handler from queue...");
             r = item->handler(item->handler_context);
             free_deferred_queue_item(item);
             if (r < 0) {
@@ -172,7 +174,8 @@ extern void free_deferred_queue(deferred_queue_t *queue)
 extern int add_item_to_deferred_queue(deferred_queue_t *queue, deferred_queue_item_t *item)
 {
     int r = DEFERRED_QUEUE_ADD_SUCCESS;
-    
+   
+    PLUGIN_DEBUG("Start - add_item_to_deferred_queue"); 
     pthread_mutex_lock(&queue->q_mutex);
     
     if (queue->q_size > DEFERRED_QUEUE_MAX_SIZE) {
@@ -192,5 +195,6 @@ extern int add_item_to_deferred_queue(deferred_queue_t *queue, deferred_queue_it
 
 out:
     pthread_mutex_unlock(&queue->q_mutex);
+    PLUGIN_DEBUG("END - add_item_to_deferred_queue");
     return r;
 }
