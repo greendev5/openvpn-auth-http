@@ -1,0 +1,5 @@
+5a31eb06aa738c7db815dafb22387c55  usr/lib/openvpn/openvpn-auth-http-1.0.so.0.0.0
+b18b55d9dcab082fd9c2dd4b623e04b2  usr/lib/openvpn/openvpn-auth-http.la
+d41d8cd98f00b204e9800998ecf8427e  usr/share/doc/openvpn-auth-http/README
+79cec1d392d104326c1909a4653d4dbd  usr/share/doc/openvpn-auth-http/changelog.Debian.gz
+aa1fb9ab0ed64cbdbad46c12f3b0337f  usr/share/doc/openvpn-auth-http/copyright

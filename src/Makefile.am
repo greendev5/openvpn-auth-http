@@ -21,5 +21,4 @@ openvpn_auth_http_la_LIBADD = -lpthread -lcurl -lc
 openvpn_auth_http_la_LDFLAGS = \
     -version-info $(LT_VERSION) \
     -release $(LT_RELEASE) \
-    -shared \
     -module

@@ -1,0 +1,5 @@
+openvpn-auth-http (1.0.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Illia Muzychuk <green@unknown>  Mon, 22 Dec 2014 11:40:31 -0800

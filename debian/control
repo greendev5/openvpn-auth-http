@@ -1,0 +1,16 @@
+Source: openvpn-auth-http
+Section: net
+Priority: extra
+Maintainer: Illia Muzychuk <i.muzichuk@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, openvpn (>=2), libcurl4-openssl-dev
+Standards-Version: 3.9.4
+Homepage: http://bvpn.com
+#Vcs-Git: git://git.debian.org/collab-maint/openvpn-auth-http.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/openvpn-auth-http.git;a=summary
+
+Package: openvpn-auth-http
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openvpn (>=2)
+Description: Simple authentication module for OpenVPN
+
+

@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@  --with autotools-dev
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(shell dpkg-buildflags --export=configure) --prefix=/usr
+
+override_dh_auto_install:
+	$(MAKE) install prefix=$(CURDIR)/debian/openvpn-auth-http/usr libdir=\$${prefix}/lib/openvpn
+	cp $(CURDIR)/debian/openvpn-auth-http/usr/lib/openvpn/openvpn-auth-http.so /tmp/openvpn-auth-http.so
+	rm -rf $(CURDIR)/debian/openvpn-auth-http/usr/lib/openvpn/openvpn-auth-http*
+	cp /tmp/openvpn-auth-http.so $(CURDIR)/debian/openvpn-auth-http/usr/lib/openvpn/ 
+

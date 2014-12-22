@@ -1,0 +1,10 @@
+Package: openvpn-auth-http
+Version: 1.0.0-1
+Architecture: amd64
+Maintainer: Illia Muzychuk <i.muzichuk@gmail.com>
+Installed-Size: 58
+Depends: libc6 (>= 2.14), libcurl3 (>= 7.16.2), openvpn (>= 2)
+Section: net
+Priority: extra
+Homepage: http://bvpn.com
+Description: Simple authentication module for OpenVPN
