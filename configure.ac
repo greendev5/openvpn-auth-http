@@ -1,7 +1,7 @@
 
 AC_PREREQ(2.50)
 
-AC_INIT([openvpn-auth-http], [-], [i.muzichuk@gmail.com])
+AC_INIT([openvpn-auth-http], [1.0.0], [i.muzichuk@gmail.com])
 
 # libtool versioning
 
