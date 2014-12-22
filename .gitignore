@@ -7,6 +7,8 @@
 # Libraries
 *.lib
 *.a
+*.lo
+*.la
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -25,4 +27,8 @@
 /autom4te.cache
 .libs/
 .deps/
+Makefile
+*.log
+*.status
+libtool
 
