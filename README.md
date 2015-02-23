@@ -1,4 +1,2 @@
-openvpn-auth-http
-=================
-
-OpenVPN plugin for easy auth using remote http server.
+This is just jsut repo to check how OpenVPN Plugin API works. Inactive...
+======================================================================
